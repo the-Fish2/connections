@@ -22,3 +22,20 @@
 
     display: flex;
 }
+
+@keyframes fade {
+    from {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    to {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+.fadeout {
+    animation: fade 2s;
+}
+
+.clicked {
+    background-color: rgba(0, 0, 0, 0.4);
+}
