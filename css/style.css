@@ -1,0 +1,24 @@
+:root {
+    --tiles-per-row: 4
+}
+
+#tilesContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile {
+    height: 50px;
+    width: calc( (100% - 200px )/ var(--tiles-per-row) );
+    background-color: rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+    text-align: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+
+    display: flex;
+}
