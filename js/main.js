@@ -3,6 +3,9 @@ const words = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 
 const answer_key = [['a', 'b', 'c', 'd'], ['e', 'f', 'g', 'h'], ['i', 'j', 'k', 'l'], ['m', 'n', 'o', 'p']]
 const TILES_PER_ROW = 4;
 
+const r = document.querySelector(':root');
+r.style.setProperty('--tiles-per-row', TILES_PER_ROW);
+
 const tileSet = new TileSet(tilesContainer, words, answer_key)
 tileSet.makeTiles();
 // NEXT STEPS: input form for words + dimensions to create customizable connections

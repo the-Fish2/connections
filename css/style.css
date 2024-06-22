@@ -1,5 +1,6 @@
 :root {
-    --tiles-per-row: 4
+    --tiles-per-row: 4;
+    --bar-background-color: yellow;
 }
 
 #tilesContainer {
@@ -22,6 +23,22 @@
 
     display: flex;
 }
+
+.bar {
+    height: 50px;
+    width: calc(100% - 200px);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+    text-align: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+
+    display: flex;
+}
+
 
 @keyframes fade {
     from {
