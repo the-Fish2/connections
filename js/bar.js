@@ -1,9 +1,8 @@
 class Bar {
-    constructor(container, color, firstElem) {
+    constructor(container, color) {
         this.bar = document.createElement('div')
         this.bar.classList.add('bar')
         this.bar.style.backgroundColor = color
-        firstElem.container.before(this.bar)
-        
+        container.append(this.bar)
     }
 }

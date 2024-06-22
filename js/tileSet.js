@@ -1,6 +1,7 @@
 class TileSet {
-    constructor(containerElement, words, answer_key) {
+    constructor(containerElement, barContainer, words, answer_key) {
         this.containerElement = containerElement;
+        this.barContainer = barContainer;
         this.words = words;
         this.answer_key = answer_key;
 
@@ -17,6 +18,7 @@ class TileSet {
 
     makeTiles() {
         this.containerElement.innerHTML=''
+        this.barContainer.innerHTML=''
         
         this.wordTiles = [];
         this.clickedWords = [];
@@ -45,7 +47,6 @@ class TileSet {
 
         for (let row of this.answer_key) {
             correctInd ++;
-            console.log(JSON.stringify(row), JSON.stringify(this.clickedWords))
             if (JSON.stringify(row) === JSON.stringify(this.clickedWords)) {
                 correct = true;
                 break;
@@ -60,7 +61,7 @@ class TileSet {
             }
 
             const correctMatchups = {0: "lightyellow", 1:"lightgreen", 2:"lightblue", 3:"mediumpurple", 5:"lightcoral"}
-            this.bars.push(new Bar(this.containerElement, correctMatchups[correctInd], this.wordTiles[0]))
+            this.bars.push(new Bar(this.barContainer, correctMatchups[correctInd], this.wordTiles[0]))
 
         }
         else {

@@ -1,8 +1,9 @@
 class InputData {
-    constructor (container, form) {
+    constructor (container, form, words, answer_key, onClickCallback) {
         this.container = container;
-        this.words = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
-        this.answer_key =  [['a', 'b', 'c', 'd'], ['e', 'f', 'g', 'h'], ['i', 'j', 'k', 'l'], ['m', 'n', 'o', 'p']];
+        this.words = words
+        this.answer_key = answer_key
+        this.onClickCallback = onClickCallback
 
         this._onSubmit = this._onSubmit.bind(this)
 
@@ -30,12 +31,6 @@ class InputData {
             row.sort()
         }
 
-        console.log(this.answer_key)
-        console.log(this.words)
-
-        const tileSet = new TileSet(tilesContainer, this.words, this.answer_key)
-        tileSet.makeTiles();
-
-        // NEED TO HIDE BARS. ALSO MAKE THIS SO MUCH BETTER W/ CALL BACK BC UNIVERSLA VARS BAD
+        this.onClickCallback(this.words, this.answer_key)
     }
 }
