@@ -5,7 +5,6 @@ const TILES_PER_ROW = 4;
 
 const tileSet = new TileSet(tilesContainer, words, answer_key)
 tileSet.makeTiles();
-
 // NEXT STEPS: input form for words + dimensions to create customizable connections
 // little animations to top of screen + hidden elements that have the actual connections sets
 //those can be their own elements that get revealed when these are gone

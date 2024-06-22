@@ -43,6 +43,11 @@ class TileSet {
 
         if (correct) {
             console.log("Correct!")
+            const finishEvent = new CustomEvent('finish');
+
+            for (let w of this.clickedTiles) {
+                w.dispatchEvent(finishEvent)
+            }
         }
         else {
             console.log("Incorrect")
