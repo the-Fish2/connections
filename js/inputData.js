@@ -1,8 +1,8 @@
 class InputData {
     constructor (container, form) {
         this.container = container;
-        this.words = [];
-        this.answer_key = [];
+        this.words = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
+        this.answer_key =  [['a', 'b', 'c', 'd'], ['e', 'f', 'g', 'h'], ['i', 'j', 'k', 'l'], ['m', 'n', 'o', 'p']];
 
         this._onSubmit = this._onSubmit.bind(this)
 
@@ -12,7 +12,7 @@ class InputData {
 
     _onSubmit (event) {
         event.preventDefault();
-        
+
         this.words = [];
         this.answer_key = [];
 
@@ -26,13 +26,14 @@ class InputData {
             }
         }
 
+        for (let row of this.answer_key) {
+            row.sort()
+        }
+
         console.log(this.answer_key)
         console.log(this.words)
 
-        words = this.words
-        answer_key = this.answer_key
-
-        tileSet = new TileSet(tilesContainer, words, answer_key)
+        const tileSet = new TileSet(tilesContainer, this.words, this.answer_key)
         tileSet.makeTiles();
 
         // NEED TO HIDE BARS. ALSO MAKE THIS SO MUCH BETTER W/ CALL BACK BC UNIVERSLA VARS BAD

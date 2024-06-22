@@ -45,6 +45,7 @@ class TileSet {
 
         for (let row of this.answer_key) {
             correctInd ++;
+            console.log(JSON.stringify(row), JSON.stringify(this.clickedWords))
             if (JSON.stringify(row) === JSON.stringify(this.clickedWords)) {
                 correct = true;
                 break;
