@@ -7,6 +7,10 @@
     flex-wrap: wrap;
 }
 
+input, form {
+    display: block;
+}
+
 .tile {
     height: 50px;
     width: calc( (100% - 200px )/ var(--tiles-per-row) );

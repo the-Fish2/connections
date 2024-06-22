@@ -16,6 +16,13 @@ class TileSet {
     }
 
     makeTiles() {
+        this.containerElement.innerHTML=''
+        
+        this.wordTiles = [];
+        this.clickedWords = [];
+        this.clickedTiles = [];
+        this.bars = [];
+        
         let index = 0;  
         for (const word of this.words) {
             this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index)
@@ -51,7 +58,7 @@ class TileSet {
                 w.dispatchEvent(finishEvent)
             }
 
-            const correctMatchups = {0: "lightyellow", 1:"lightgreen", 2:"lightblue", 3:"mediumpurple"}
+            const correctMatchups = {0: "lightyellow", 1:"lightgreen", 2:"lightblue", 3:"mediumpurple", 5:"lightcoral"}
             this.bars.push(new Bar(this.containerElement, correctMatchups[correctInd], this.wordTiles[0]))
 
         }
