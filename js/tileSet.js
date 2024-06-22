@@ -7,6 +7,7 @@ class TileSet {
         this.wordTiles = [];
         this.clickedWords = [];
         this.clickedTiles = [];
+        this.bars = [];
 
         this.makeTiles = this.makeTiles.bind(this)
         this.clickWord = this.clickWord.bind(this)
@@ -17,8 +18,8 @@ class TileSet {
     makeTiles() {
         let index = 0;  
         for (const word of this.words) {
-            index ++;
             this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index)
+            index ++;
         }
     }
 
@@ -33,8 +34,10 @@ class TileSet {
         this.clickedWords.sort();
 
         let correct = false 
+        let correctInd = -1;
 
         for (let row of this.answer_key) {
+            correctInd ++;
             if (JSON.stringify(row) === JSON.stringify(this.clickedWords)) {
                 correct = true;
                 break;
@@ -44,10 +47,13 @@ class TileSet {
         if (correct) {
             console.log("Correct!")
             const finishEvent = new CustomEvent('finish');
-
             for (let w of this.clickedTiles) {
                 w.dispatchEvent(finishEvent)
             }
+
+            const correctMatchups = {0: "lightyellow", 1:"lightgreen", 2:"lightblue", 3:"mediumpurple"}
+            this.bars.push(new Bar(this.containerElement, correctMatchups[correctInd], this.wordTiles[0]))
+
         }
         else {
             console.log("Incorrect")

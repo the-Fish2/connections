@@ -1,6 +1,5 @@
 :root {
     --tiles-per-row: 4;
-    --bar-background-color: yellow;
 }
 
 #tilesContainer {
@@ -26,11 +25,10 @@
 
 .bar {
     height: 50px;
-    width: calc(100% - 200px);
+    width: calc(100% - (200px/var(--tiles-per-row)));
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
-
     text-align: center;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
