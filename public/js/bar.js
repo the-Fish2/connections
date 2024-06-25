@@ -2,7 +2,7 @@ class Bar {
     constructor(container, color, category, words) {
         this.bar = document.createElement('div')
         this.bar.innerHTML = `
-            <h1> ${category} </h1>
+            <h1> ${color.toUpperCase()} </h1>
             <p>&nbsp;</p>
             <p> ${words} </p>
         `;
