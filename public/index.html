@@ -5,12 +5,14 @@
   <title> Connections </title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <script src="js/inputData.js" defer></script>
-  <script src="js/tile.js" defer></script>
-  <script src="js/bar.js" defer></script>
-  <script src="js/tileSet.js" defer></script>
-  <script src="js/inputDataManager.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/client/inputData.js" defer></script>
+  <script src="js/client/tile.js" defer></script>
+  <script src="js/client/bar.js" defer></script>
+  <script src="js/client/tileSet.js" defer></script>
+  <script src="js/client/inputDataManager.js" defer></script>
+  <script src="js/client/main.js" defer></script>
+
+  <script src="js/fetch.js" defer></script>
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -33,6 +35,29 @@
   <div id="bars"></div>
 
   <div id="tilesContainer"> </div>
+  <button id="saveGame"> </button>
+
+  <div id="pastGames"> </div>
 
 </body>
 </html>
+
+<!-- 
+ NEXT STEPS: 
+7) add in title feature (for future links)
+8) allow un-click for buttons
+9) add in potential for editing previous connections games (not too tough with db)
+10) container-ize kinda - have different sections for form submit, play connections, past games
+11) store previous connections: allow you to access old games from database + click them.
+12) save your current connections game to database
+12) mistakes counter
+13) 'one away' 
+
+
+1) DONE - set up data manager to make OOP a bit better
+2) DONE - clear bars on resubmit
+where is 3??
+4) DONE - randomize tile placement (as it stands the game is not very hard...)
+5) DONE - set up flexible dimensions
+6) DONE - add words to bars (basically just cleaning it up to make it more like connections)
+ -->

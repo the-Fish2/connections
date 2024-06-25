@@ -1,0 +1,2 @@
+const pastGames = document.querySelector('#pastGames')
+// ok so need a way to not just check pastGames for click, but to fetch from connectionsDb a list of the past games (we'll say with titles), and then make THOSE clickable. 
