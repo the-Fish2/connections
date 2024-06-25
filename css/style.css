@@ -32,13 +32,28 @@ input, form {
     width: calc(100% - (200px/var(--tiles-per-row)));
     margin: 10px;
     padding: 10px;
+
     border-radius: 10px;
-    text-align: center;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
 
-    display: flex;
+    display: block;
+}
+
+.bar h1 {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.bar p {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: -8px;
 }
 
 
