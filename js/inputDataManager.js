@@ -13,9 +13,15 @@ class InputDataManager {
         const inputData = new InputData(this.container, form, this.words, this.answer_key, this._buildBoard)
     }
 
-    _buildBoard(words, answer_key) {
+    _buildBoard(dims, words, answer_key) {
+        TILES_PER_ROW = dims;
+        
+        const r = document.querySelector(':root');
+        r.style.setProperty('--tiles-per-row', TILES_PER_ROW);
+
         const barCont = document.querySelector("#bars")
         words.sort(() => Math.random() - 0.5);
+
         const tileSet = new TileSet(tilesContainer, barCont, words, answer_key)
         tileSet.makeTiles();
     }

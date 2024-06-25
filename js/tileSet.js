@@ -60,7 +60,7 @@ class TileSet {
                 w.dispatchEvent(finishEvent)
             }
 
-            const correctMatchups = {0: "lightyellow", 1:"lightgreen", 2:"lightblue", 3:"mediumpurple", 5:"lightcoral"}
+            const correctMatchups = {0: "lightyellow", 1:"lightgreen", 2:"lightblue", 3:"mediumpurple", 4:"lightcoral"}
             this.bars.push(new Bar(this.barContainer, correctMatchups[correctInd], this.wordTiles[0]))
 
         }

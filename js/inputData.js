@@ -17,20 +17,25 @@ class InputData {
         this.words = [];
         this.answer_key = [];
 
+        const dims = Number(document.querySelector('#dims').value)
         const val = document.querySelectorAll('[data-ind]')
 
+        let valIter = 0;
         for (const item of val) {
-            const newElems = item.value.split(",")
-            this.answer_key.push(newElems)
-            for (const e of newElems) {
-                this.words.push(e)
-            }
+            if (valIter < dims) {
+                const newElems = item.value.split(",")
+                this.answer_key.push(newElems)
+                for (const e of newElems) {
+                    this.words.push(e)
+                }
+            } 
+            valIter ++;
         }
 
         for (let row of this.answer_key) {
             row.sort()
         }
 
-        this.onClickCallback(this.words, this.answer_key)
+        this.onClickCallback(dims, this.words, this.answer_key)
     }
 }
