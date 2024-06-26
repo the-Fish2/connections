@@ -1,0 +1,25 @@
+{
+  "name": "connections",
+  "version": "1.0.0",
+  "description": "NYT connections, with a 5x5 feature and with the ability to make and share your games",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-Fish2/connections.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/the-Fish2/connections/issues"
+  },
+  "homepage": "https://github.com/the-Fish2/connections#readme"
+}
