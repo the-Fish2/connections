@@ -15,6 +15,7 @@ class TileSet {
         this.checkAnswer = this.checkAnswer.bind(this)
         this.barPrep = this.barPrep.bind(this)
         this.wordsToOutput = this.wordsToOutput.bind(this)
+        this.unClickWord = this.unClickWord.bind(this)
 
     }
 
@@ -29,7 +30,7 @@ class TileSet {
         
         let index = 0;  
         for (const word of this.words) {
-            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index)
+            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index, this.unClickWord)
             index ++;
         }
     }
@@ -39,6 +40,18 @@ class TileSet {
         if (this.clickedWords.push(thisTile.word) === TILES_PER_ROW) {
             this.checkAnswer()
         }
+    }
+
+    unClickWord(thisTile) {
+
+        for (const ind in this.clickedTiles) {
+            if (thisTile.word == this.clickedTiles[ind].word) {
+                this.clickedTiles.splice(ind, 1)
+            }
+        }
+
+        const ind1 = this.clickedWords.indexOf(thisTile.word)
+        this.clickedWords.splice(ind1, 1)
     }
 
     barPrep(correctInd, oldSendWords) {

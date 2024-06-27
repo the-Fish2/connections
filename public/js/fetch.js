@@ -26,9 +26,3 @@ const generatePastGames = async () => {
 }
 
 generatePastGames()
-
-//wait ... need to generate Past Games once and then click can just be hidden/not hidden
-
-// ok so need a way to not just check pastGames for click, but to fetch from connectionsDb a list of the past games (we'll say with titles), and then make THOSE clickable.
-
-//step one: fetch game one and always offer that as an option.

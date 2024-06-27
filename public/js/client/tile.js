@@ -1,11 +1,13 @@
 class Tile {
-    constructor(container, onClickCallback, word, index) {
+    constructor(container, onClickCallback, word, index, onUnClickCallback) {
         this.container = container;
         this.onClickCallback = onClickCallback;
+        this.onUnClickCallback = onUnClickCallback;
 
         this._onClick = this._onClick.bind(this);
         this._reset = this._reset.bind(this);
         this._finish = this._finish.bind(this);
+        this._onUnClick = this._onUnClick.bind(this);
 
         this.tile = document.createElement('div')
         this.tile.classList.add('tile')
@@ -23,7 +25,15 @@ class Tile {
     _onClick() {
         this.tile.classList.add('clicked')
         this.tile.removeEventListener('click', this._onClick)
+        this.tile.addEventListener('click', this._onUnClick)
         this.onClickCallback(this.tile);
+    }
+
+    _onUnClick() {
+        this.tile.classList.remove('clicked')
+        this.tile.removeEventListener('click', this._onUnClick)
+        this.tile.addEventListener('click', this._onClick)
+        this.onUnClickCallback(this.tile);
     }
 
     _finish() {
