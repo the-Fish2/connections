@@ -21,6 +21,27 @@ function loadPastGame(req, res) {
 
 app.get('/pastGames/:name', loadPastGame)
 
+async function saveGame(req, res) {
+
+    console.log("called")
+
+    const routeParams = req.params;
+
+    const inputInfo = req.body
+
+    prevConnections[routeParams.title] = {
+        "dimensions":inputInfo.dimensions,
+        "words":inputInfo.words,
+        "answer_key":inputInfo.answer_key
+    }
+
+    await fse.writeJSON('./connectionsDb.json', prevConnections)
+
+    res.json({success: true})
+}
+
+app.post('/saveGame/:title', jsonParser, saveGame)
+
 function displayPastGames(req, res) {
     let gameTitles = []
     for (const item in prevConnections) {

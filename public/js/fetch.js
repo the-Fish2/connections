@@ -11,12 +11,28 @@ async function showAGame(event) {
 async function saveGame(event) {
     event.preventDefault();
 
-    // const fetchOptions = {
-    //     dimensions = 
-    //     words = [];
+    const inputInfo = {
+        title: "Must Update Funcitonality",
+        dimensions: TILES_PER_ROW,
+        words: inputDataManager.words,
+        answer_key: inputDataManager.answer_key,
+    }
 
-    // }
+    if (inputInfo.words.length != 0) {
 
+        const fetchOptions = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(inputInfo)
+        }
+
+        console.log(fetchOptions)
+
+        await fetch('/saveGame/' + inputInfo.title, fetchOptions);
+    }
 }
 
 
