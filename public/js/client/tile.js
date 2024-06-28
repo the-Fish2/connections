@@ -23,17 +23,18 @@ class Tile {
     }
 
     _onClick() {
+        
         this.tile.classList.add('clicked')
+        this.onClickCallback(this.tile);
         this.tile.removeEventListener('click', this._onClick)
         this.tile.addEventListener('click', this._onUnClick)
-        this.onClickCallback(this.tile);
     }
 
     _onUnClick() {
         this.tile.classList.remove('clicked')
+        this.onUnClickCallback(this.tile);
         this.tile.removeEventListener('click', this._onUnClick)
         this.tile.addEventListener('click', this._onClick)
-        this.onUnClickCallback(this.tile);
     }
 
     _finish() {
@@ -45,8 +46,11 @@ class Tile {
 
         setTimeout(function() {
             this.tile.classList.remove('clicked')
-            this.tile.addEventListener('click', this._onClick)  
-        }.bind(this), 200)
+            this.tile.removeEventListener('click', this._onUnClick)  
+            this.tile.addEventListener('click', this._onClick) 
+            this.tile.classList.remove('fadeout')
+         
+        }.bind(this), 1800)
 
         // this.tile.onanimationend = () => {
 

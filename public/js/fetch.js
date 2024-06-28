@@ -5,8 +5,20 @@ async function showAGame(event) {
     const json = await response.json()
 
     inputDataManager._buildBoard(json.dimensions, json.words, json.answer_key);
+}
+
+
+async function saveGame(event) {
+    event.preventDefault();
+
+    // const fetchOptions = {
+    //     dimensions = 
+    //     words = [];
+
+    // }
 
 }
+
 
 const generatePastGames = async () => {
 
@@ -26,3 +38,6 @@ const generatePastGames = async () => {
 }
 
 generatePastGames()
+
+const saveGameButton = document.querySelector('#saveGame')
+saveGameButton.addEventListener('click', saveGame)

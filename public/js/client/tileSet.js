@@ -36,22 +36,34 @@ class TileSet {
     }
 
     clickWord(thisTile) {
+        
+        // console.log(this.clickedWords)
         this.clickedTiles.push(thisTile)
-        if (this.clickedWords.push(thisTile.word) === TILES_PER_ROW) {
+        this.clickedWords.push(thisTile.word)
+        if (this.clickedWords.length === TILES_PER_ROW) {
             this.checkAnswer()
         }
     }
 
     unClickWord(thisTile) {
 
+        // console.log(this.clickedWords)
+
+        let clickedTiles2 = this.clickedTiles
+        let clickedWords2 = this.clickedWords
+
         for (const ind in this.clickedTiles) {
             if (thisTile.word == this.clickedTiles[ind].word) {
-                this.clickedTiles.splice(ind, 1)
+                clickedTiles2.splice(ind, 1)
             }
         }
 
-        const ind1 = this.clickedWords.indexOf(thisTile.word)
-        this.clickedWords.splice(ind1, 1)
+        const ind1 = clickedWords2.indexOf(thisTile.word)
+        // console.log(ind1)
+        clickedWords2.splice(ind1, 1)
+
+        this.clickedTiles = clickedTiles2
+        this.clickedWords = clickedWords2
     }
 
     barPrep(correctInd, oldSendWords) {
