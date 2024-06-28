@@ -1,10 +1,11 @@
 async function showAGame(event) {
     // console.log(event.currentTarget)
     // console.log(event.currentTarget.textContent)
-    const response = await fetch('/pastGames/' + event.currentTarget.textContent)
+    const title = event.currentTarget.textContent
+    const response = await fetch('/pastGames/' + title)
     const json = await response.json()
 
-    inputDataManager._buildBoard(json.dimensions, json.words, json.answer_key);
+    inputDataManager._buildBoard(json.dimensions, json.words, json.answer_key, title);
 }
 
 
@@ -12,7 +13,6 @@ async function saveGame(event) {
     event.preventDefault();
 
     const inputInfo = {
-        title: "Must Update Funcitonality",
         dimensions: TILES_PER_ROW,
         words: inputDataManager.words,
         answer_key: inputDataManager.answer_key,
@@ -31,25 +31,31 @@ async function saveGame(event) {
 
         console.log(fetchOptions)
 
-        await fetch('/saveGame/' + inputInfo.title, fetchOptions);
+        await fetch('/saveGame/' + inputDataManager.title, fetchOptions);
+
+        
+        const gamesList = document.querySelector('#pastGamesList')
+        prepPastGames(gamesList, inputDataManager.title)
     }
 }
 
+const prepPastGames = async (gamesList, title) => {
+    const newGame = document.createElement('button')
+    newGame.appendChild(document.createTextNode(title))
+    newGame.addEventListener('click', showAGame)
+    gamesList.appendChild(newGame)
+}
 
 const generatePastGames = async () => {
 
     const response = await fetch('/pastGames')
     const json = await response.json()
     const gameTitles = json.gameTitles
-
+    
     const gamesList = document.querySelector('#pastGamesList')
     for (const item of gameTitles) {
-        const newGame = document.createElement('button')
-        newGame.appendChild(document.createTextNode(item))
-        newGame.addEventListener('click', showAGame)
-        
-        gamesList.appendChild(newGame)
-    }
+        prepPastGames(gamesList, item)
+    }  
 
 }
 
