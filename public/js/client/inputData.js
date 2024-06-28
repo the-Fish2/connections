@@ -17,6 +17,7 @@ class InputData {
         this.words = [];
         this.answer_key = [];
 
+        const title = document.querySelector('#title').value
         const dims = Number(document.querySelector('#dims').value)
         const val = document.querySelectorAll('[data-ind]')
 
@@ -36,6 +37,6 @@ class InputData {
             row.sort()
         }
 
-        this.onClickCallback(dims, this.words, this.answer_key)
+        this.onClickCallback(dims, this.words, this.answer_key, title)
     }
 }
