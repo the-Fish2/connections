@@ -20,36 +20,51 @@
 
 </head>
 <body>
-  <h1> Connections </h1>
+  <header> 
+    <h1> Connections </h1>
+  </header>
 
-  <form id="connectionsGenerate">
-    Delineate words with commas! <br />
-    Title: <input type="text" id="title" value="My First Connections"/>
-    Dimensions (4 or 5): <input type="number" id="dims" value="4"/> 
+  <div class="container">
+    
+    <div class="leftCol">
 
-    Yellow category: <input type="text" data-col="0" value="Yellow" />
-    Yellow words: <input type="text" data-ind="0" value='a,b,c,d'/>
+      <form id="connectionsGenerate">
 
-    Green category: <input type="text" data-col="1" value="Green" />
-    Green words: <input type="text" data-ind="1" value='e,f,g,h'/>
+        <div class="formCol"> 
+          Title: <input type="text" id="title" value="My First Connections"/>
+          Yellow category: <input type="text" data-col="0" value="Yellow" />
+          Green category: <input type="text" data-col="1" value="Green" />
+          Blue category: <input type="text" data-col="2" value="Blue" />
+          Purple category: <input type="text" data-col="3" value="Purple" />
+          (Extra) Coral category: <input type="text" data-col="4" value="Coral" />
+        </div>
 
-    Blue category: <input type="text" data-col="2" value="Blue" />
-    Blue words: <input type="text" data-ind="2" value='i,j,k,l'/>
+        <div class="formCol">        
+          Dimensions (4 or 5): <input type="number" id="dims" value="4"/>
+          Yellow words: <input type="text" data-ind="0" value='a,b,c,d'/>
+          Green words: <input type="text" data-ind="1" value='e,f,g,h'/>
+          Blue words: <input type="text" data-ind="2" value='i,j,k,l'/>
+          Purple words: <input type="text" data-ind="3" value='m,n,o,p'/>
+          (Extra) Coral words: <input type="text" data-ind="4" value='u,v,w,x,y'/>
+        </div>
+      
+        <input type="submit", id="submit"/>
 
-    Purple category: <input type="text" data-col="3" value="Purple" />
-    Purple words: <input type="text" data-ind="3" value='m,n,o,p'/>
+      </form>
 
-    (Extra) Coral category: <input type="text" data-col="4" value="Coral" />
-    (Extra) Coral words: <input type="text" data-ind="4" value='u,v,w,x,y'/>
-    <input type="submit"/>
-  </form>
+    </div>
 
-  <h2 id="titleDisplay"></h2>
-  <div id="bars"></div>
-  <div id="tilesContainer"> </div>
+    <div class="rightCol"> 
 
-  <button id="saveGame"> Save Game </button> <br>
+      <h2 id="titleDisplay"></h2>
+      <div id="bars"></div>
+      <div id="tilesContainer"> </div>
+      <button id="saveGame"> Save Game </button> <br>
 
+    </div>
+
+  </div>
+  
   <button id="showPastGames"> Show Past Games </button>
   <div id="pastGamesList" class="hidden" ></div>
 
