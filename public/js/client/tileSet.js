@@ -1,32 +1,27 @@
 class TileSet {
-    constructor(containerElement, barContainer, words, answer_key) {
+    constructor(containerElement, barCall, words, answer_key) {
         this.containerElement = containerElement;
-        this.barContainer = barContainer;
+        this.barCall = barCall
         this.words = words;
         this.answer_key = answer_key;
 
         this.wordTiles = [];
         this.clickedWords = [];
         this.clickedTiles = [];
-        this.bars = [];
 
         this.makeTiles = this.makeTiles.bind(this)
         this.clickWord = this.clickWord.bind(this)
         this.checkAnswer = this.checkAnswer.bind(this)
-        this.barPrep = this.barPrep.bind(this)
-        this.wordsToOutput = this.wordsToOutput.bind(this)
         this.unClickWord = this.unClickWord.bind(this)
 
     }
 
     makeTiles() {
         this.containerElement.innerHTML=''
-        this.barContainer.innerHTML=''
         
         this.wordTiles = [];
         this.clickedWords = [];
         this.clickedTiles = [];
-        this.bars = [];
         
         let index = 0;  
         for (const word of this.words) {
@@ -66,21 +61,6 @@ class TileSet {
         this.clickedWords = clickedWords2
     }
 
-    barPrep(correctInd, oldSendWords) {
-        const correctMatchups = {0: "lightyellow", 1:"lightgreen", 2:"lightblue", 3:"mediumpurple", 4:"lightcoral"}
-        const sendWords = this.wordsToOutput(oldSendWords)
-        return new Bar(this.barContainer, correctMatchups[correctInd], "HI", sendWords)
-    }
-
-    wordsToOutput(newWords) {
-        let strWords = "";
-        for (let i = 0; i < newWords.length - 1; i++) {
-            strWords += newWords[i].toUpperCase() + ", "
-        }
-        strWords += newWords[newWords.length-1].toUpperCase();
-        return strWords;
-    }
-
     checkAnswer() {
         this.clickedWords.sort();
 
@@ -102,7 +82,7 @@ class TileSet {
                 w.dispatchEvent(finishEvent)
             }
 
-            this.barPrep(correctInd, this.clickedWords)
+            this.barCall(correctInd, this.clickedWords)
 
         }
         else {
