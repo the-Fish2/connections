@@ -13,9 +13,9 @@ class BarSet {
         this.barCont.innerHTML = ''
     }
 
-    _makeBar(correctInd, clickedWords) {
+    _makeBar(correctInd, clickedWords, title) {
         const sendWords = this.wordsToOutput(clickedWords)
-        const newBar = new Bar(this.barCont, this.correctMatchups[correctInd], "HI", sendWords)
+        const newBar = new Bar(this.barCont, this.correctMatchups[correctInd], title, sendWords)
         this.bars.push(newBar)
     }
 

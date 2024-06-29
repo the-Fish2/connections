@@ -32,6 +32,7 @@ async function saveGame(req, res) {
     prevConnections[routeParams.title] = {
         "dimensions":inputInfo.dimensions,
         "words":inputInfo.words,
+        "answer_titles":inputInfo.answer_titles,
         "answer_key":inputInfo.answer_key
     }
 

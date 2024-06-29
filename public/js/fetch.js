@@ -5,7 +5,7 @@ async function showAGame(event) {
     const response = await fetch('/pastGames/' + title)
     const json = await response.json()
 
-    inputDataManager._buildBoard(json.dimensions, json.words, json.answer_key, title);
+    inputDataManager._buildBoard(json.dimensions, json.words, json.answer_titles, json.answer_key, title);
 }
 
 
@@ -15,6 +15,7 @@ async function saveGame(event) {
     const inputInfo = {
         dimensions: TILES_PER_ROW,
         words: inputDataManager.words,
+        answer_titles: inputDataManager.answer_titles,
         answer_key: inputDataManager.answer_key,
     }
 
