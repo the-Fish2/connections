@@ -6,6 +6,10 @@ class InputDataManager {
         this._buildForm = this._buildForm.bind(this)
         this._buildBoard = this._buildBoard.bind(this)
         this._makeBar = this._makeBar.bind(this)
+
+        this._makeHint = this._makeHint.bind(this)
+        this._makeClear = this._makeClear.bind(this)
+        this._makeShuffle = this._makeShuffle.bind(this)
     }
 
     _buildForm() {
@@ -35,10 +39,31 @@ class InputDataManager {
 
         const tileSet = new TileSet(tilesContainer, this._makeBar, this.words, this.answer_key)
         tileSet.makeTiles();
+
+        const buttonContainer = document.querySelector('#buttonContainer')
+        const buttonList = {
+            "hint": {name: "Hint", id: "hint", callBack: this._makeHint},
+            "clear": {name: "Clear", id: "clear", callBack: this._makeClear},
+            "shuffle": {name: "Shuffle", id: "shuffle", callBack: this._makeShuffle},
+        }
+        const buttonSet = new ButtonSet(buttonContainer, buttonList)
     }
     
     _makeBar(correctInd, clickedWords) {
         this.barContainer._makeBar(correctInd, clickedWords, this.answer_titles[correctInd])
+    }
+
+    _makeHint() {
+        console.log("hi")
+        return;
+    }
+
+    _makeClear() {
+        return;
+    }
+
+    _makeShuffle() {
+        return;
     }
 
 }

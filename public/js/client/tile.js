@@ -14,6 +14,7 @@ class Tile {
         this.tile.dataset.index = index;
         this.tile.innerHTML = word;
         this.tile.word = word;
+        this.tile.solved = false;
 
         this.tile.addEventListener('click', this._onClick)
         this.tile.addEventListener('reset', this._reset) 
@@ -38,6 +39,7 @@ class Tile {
     }
 
     _finish() {
+        this.tile.solved = true;
         this.tile.classList.add('hidden')
     }
 

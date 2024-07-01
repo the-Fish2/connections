@@ -11,6 +11,7 @@
   <script src="js/client/bar.js" defer></script>
   <script src="js/client/barSet.js" defer></script>
   <script src="js/client/tileSet.js" defer></script>
+  <script src="js/client/buttonSet.js" defer></script>
   <script src="js/client/inputDataManager.js" defer></script>
   <script src="js/client/main.js" defer></script>
 
@@ -59,7 +60,11 @@
       <h2 id="titleDisplay"></h2>
       <div id="bars"></div>
       <div id="tilesContainer"> </div>
-      <button id="saveGame"> Save Game </button> <br>
+
+      <div class="container" id="buttonContainer">
+      </div>
+
+      <button id="saveGame"> Save Game </button>
 
     </div>
 
@@ -70,24 +75,3 @@
 
 </body>
 </html>
-
-<!-- 
- NEXT STEPS: 
-11) add inputs for names of categories. also pass in colors for hint feature. 
-11) container-ize kinda - have different sections for form submit, play connections, past games
-12) mistakes counter
-13) 'one away' 
-14) add in potential for editing previous connections games (not too tough with db)
-
-
-1) DONE - set up data manager to make OOP a bit better
-2) DONE - clear bars on resubmit
-where is 3??
-4) DONE - randomize tile placement (as it stands the game is not very hard...)
-5) DONE - set up flexible dimensions
-6) DONE - add words to bars (basically just cleaning it up to make it more like connections)
-7) DONE - store previous connections: allow you to access old games from database + click them.
-8) DONE - allow un-click for tiles in connections
-9) DONE - save your current connections game to database
-10) DONE -  add in title feature (for future links)
- -->
