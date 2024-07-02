@@ -37,8 +37,8 @@ class InputDataManager {
 
         this.barContainer._reset()
 
-        const tileSet = new TileSet(tilesContainer, this._makeBar, this.words, this.answer_key)
-        tileSet.makeTiles();
+        this.tileSet = new TileSet(tilesContainer, this._makeBar, this.words, this.answer_key)
+        this.tileSet.makeTiles();
 
         const buttonContainer = document.querySelector('#buttonContainer')
         const buttonList = {
@@ -59,11 +59,13 @@ class InputDataManager {
     }
 
     _makeClear() {
-        return;
+        this.tileSet.makeClear()
     }
 
     _makeShuffle() {
-        return;
+        const remainingWords = this.tileSet.wordTiles.filter((tile) => !tile.tile.solved)
+        remainingWords.sort(() => Math.random() - 0.5);
+        this.tileSet.makeShuffle(remainingWords)
     }
 
 }

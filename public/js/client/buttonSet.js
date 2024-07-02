@@ -2,10 +2,11 @@ class ButtonSet {
     constructor (buttonContainer, buttonList) {
         this.buttonList = buttonList;
         this.buttonContainer = buttonContainer
+        this.buttonContainer.innerHTML = ''
 
         this._generate = this._generate.bind(this)
 
-        console.log(buttonList)
+        // console.log(buttonList)
 
         for (const b in buttonList) {
             const currButton = buttonList[b]
@@ -18,7 +19,7 @@ class ButtonSet {
         newButton.innerHTML = name;
         newButton.id = id;
         newButton.addEventListener('click', callBack)
-        console.log(newButton.id)
+        // console.log(newButton.id)
         this.buttonContainer.appendChild(newButton)
     }
 }

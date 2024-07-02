@@ -13,6 +13,8 @@ class TileSet {
         this.clickWord = this.clickWord.bind(this)
         this.checkAnswer = this.checkAnswer.bind(this)
         this.unClickWord = this.unClickWord.bind(this)
+        this.makeShuffle = this.makeShuffle.bind(this)
+        this.makeClear = this.makeClear.bind(this)
 
     }
 
@@ -29,6 +31,33 @@ class TileSet {
             index ++;
         }
     }
+
+    makeShuffle(words2) {
+        this.containerElement.innerHTML=''
+        this.wordTiles = []
+        const clickedWords2 = this.clickedWords
+        this.makeClear()
+
+        let index = 0;  
+        for (const word of words2) {
+            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word.tile.word, index, this.unClickWord)
+            const maintainClickEvent = new CustomEvent('maintainClick');
+            
+            for (const clickedWord of clickedWords2) {
+                if (clickedWord == word.tile.word) {
+                    // console.log(this.wordTiles[index])
+                    this.wordTiles[index].tile.dispatchEvent(maintainClickEvent)
+                }
+            }
+            index ++;
+        }
+
+    }
+
+    makeClear() {
+        this.checkAnswer();
+    }
+
 
     clickWord(thisTile) {
         
@@ -76,7 +105,7 @@ class TileSet {
         }
 
         if (correct) {
-            console.log("Correct!")
+            // console.log("Correct!")
             const finishEvent = new CustomEvent('finish');
             for (let w of this.clickedTiles) {
                 w.dispatchEvent(finishEvent)
@@ -86,7 +115,7 @@ class TileSet {
 
         }
         else {
-            console.log("Incorrect")
+            // console.log("Incorrect")
             const resetEvent = new CustomEvent('reset');
 
             for (let w of this.clickedTiles) {
