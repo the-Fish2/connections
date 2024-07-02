@@ -78,12 +78,14 @@ input[type="number"] {
 .tile {
     height: 50px;
     width: calc( (100% - 200px )/ var(--tiles-per-row) );
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: white;
+    opacity: 0.2;
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
 
     text-align: center;
+    color: black;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
@@ -135,9 +137,11 @@ input[type="number"] {
 }
 
 .clicked {
-    background-color: rgba(0, 0, 0, 0.4);
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    opacity: 0.4;
 }
 
 .hidden {
     display: none;
 }
+

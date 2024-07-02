@@ -29,6 +29,9 @@ class InputDataManager {
         this.answer_titles = answer_titles
         TILES_PER_ROW = dims;
 
+        const saveGame = document.querySelector('#saveGame')
+        saveGame.classList.remove('hidden')
+
         const r = document.querySelector(':root');
         r.style.setProperty('--tiles-per-row', TILES_PER_ROW);
         
@@ -54,7 +57,11 @@ class InputDataManager {
     }
 
     _makeHint() {
-        console.log("hi")
+        //need several components
+        //first, background screen is grayed out and new text that says "pick a tile"
+        //then, a tile needs to be clicked without triggering the onclick function. 
+        //then, that tile reveals its color, and returns to the game board. everything remains selected
+        //note: clicking should not take away the color!
         return;
     }
 
