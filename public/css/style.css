@@ -78,7 +78,7 @@ input[type="number"] {
 .tile {
     height: 50px;
     width: calc( (100% - 200px )/ var(--tiles-per-row) );
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgb(180, 180, 180);
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -124,10 +124,10 @@ input[type="number"] {
 
 @keyframes fade {
     from {
-        background-color: rgba(0, 0, 0, 0.4);
+        filter: brightness(85%);
     }
     to {
-        background-color: rgba(0, 0, 0, 0.2);
+        filter: brightness(100%);
     }
 }
 
@@ -136,8 +136,9 @@ input[type="number"] {
 }
 
 .clicked {
-    background-color: rgba(0, 0, 0, 0.4);
+    /* background-color: rgba(0, 0, 0, 0.4); */
     /* opacity: 0.4; */
+    filter: brightness(85%);
 }
 
 .hidden {
