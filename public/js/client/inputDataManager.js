@@ -40,15 +40,16 @@ class InputDataManager {
 
         this.barContainer._reset()
 
-        this.tileSet = new TileSet(tilesContainer, this._makeBar, this.words, this.answer_key)
-        this.tileSet.makeTiles();
-
         const buttonContainer = document.querySelector('#buttonContainer')
         const buttonList = {
             "hint": {name: "Hint", id: "hint", callBack: this._makeHint},
             "clear": {name: "Clear", id: "clear", callBack: this._makeClear},
             "shuffle": {name: "Shuffle", id: "shuffle", callBack: this._makeShuffle},
         }
+
+        this.tileSet = new TileSet(tilesContainer, this._makeBar, this.words, this.answer_key)
+        this.tileSet.makeTiles();
+
         const buttonSet = new ButtonSet(buttonContainer, buttonList)
     }
     
@@ -62,7 +63,8 @@ class InputDataManager {
         //then, a tile needs to be clicked without triggering the onclick function. 
         //then, that tile reveals its color, and returns to the game board. everything remains selected
         //note: clicking should not take away the color!
-        return;
+        const hintMode = new CustomEvent('hintMode');
+        this.tileSet.containerElement.dispatchEvent(hintMode)
     }
 
     _makeClear() {

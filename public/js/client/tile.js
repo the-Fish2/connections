@@ -1,5 +1,5 @@
 class Tile {
-    constructor(container, onClickCallback, word, index, onUnClickCallback) {
+    constructor(container, onClickCallback, word, index, color, onUnClickCallback) {
         this.container = container;
         this.onClickCallback = onClickCallback;
         this.onUnClickCallback = onUnClickCallback;
@@ -9,9 +9,12 @@ class Tile {
         this._finish = this._finish.bind(this);
         this._onUnClick = this._onUnClick.bind(this);
 
+        this.hintMode = false;
+
         this.tile = document.createElement('div')
         this.tile.classList.add('tile')
         this.tile.dataset.index = index;
+        this.tile.color = color;
         this.tile.innerHTML = word;
         this.tile.word = word;
         this.tile.solved = false;
@@ -20,23 +23,41 @@ class Tile {
         this.tile.addEventListener('maintainClick', this._onClick)
         this.tile.addEventListener('reset', this._reset) 
         this.tile.addEventListener('finish', this._finish) 
+        this.tile.addEventListener('hintMode', function (e) {
+            this.hintMode = !this.hintMode
+            this.hintCallBack = e.detail.callback
+        }.bind(this)) 
 
         container.appendChild(this.tile)
     }
 
     _onClick() {
+        if (this.hintMode) {
+            this._hint()
+        }
+        else {
+            this.tile.classList.add('clicked')
+            this.onClickCallback(this.tile);
+            this.tile.removeEventListener('click', this._onClick)
+            this.tile.addEventListener('click', this._onUnClick)
+        }
         
-        this.tile.classList.add('clicked')
-        this.onClickCallback(this.tile);
-        this.tile.removeEventListener('click', this._onClick)
-        this.tile.addEventListener('click', this._onUnClick)
+    }
+    _hint() {
+        this.tile.style.backgroundColor = this.tile.color;
+        this.hintCallBack()
     }
 
     _onUnClick() {
-        this.tile.classList.remove('clicked')
-        this.onUnClickCallback(this.tile);
-        this.tile.removeEventListener('click', this._onUnClick)
-        this.tile.addEventListener('click', this._onClick)
+        if (this.hintMode) {
+            this._hint()
+        }
+        else {
+            this.tile.classList.remove('clicked')
+            this.onUnClickCallback(this.tile);
+            this.tile.removeEventListener('click', this._onUnClick)
+            this.tile.addEventListener('click', this._onClick)
+        }
     }
 
     _finish() {

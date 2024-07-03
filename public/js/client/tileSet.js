@@ -15,6 +15,9 @@ class TileSet {
         this.unClickWord = this.unClickWord.bind(this)
         this.makeShuffle = this.makeShuffle.bind(this)
         this.makeClear = this.makeClear.bind(this)
+        this.hintCall = this.hintCall.bind(this)
+
+        this.containerElement.addEventListener('hintMode', this.hintCall)
 
     }
 
@@ -25,9 +28,9 @@ class TileSet {
         this.clickedWords = [];
         this.clickedTiles = [];
         
-        let index = 0;  
+        let index = 0; 
         for (const word of this.words) {
-            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index, this.unClickWord)
+            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index, "yellow", this.unClickWord)
             index ++;
         }
     }
@@ -40,7 +43,7 @@ class TileSet {
 
         let index = 0;  
         for (const word of words2) {
-            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word.tile.word, index, this.unClickWord)
+            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word.tile.word, index, "yellow", this.unClickWord)
             const maintainClickEvent = new CustomEvent('maintainClick');
             
             for (const clickedWord of clickedWords2) {
@@ -56,6 +59,13 @@ class TileSet {
 
     makeClear() {
         this.checkAnswer();
+    }
+
+    hintCall() {
+        const evCall = new CustomEvent('hintMode', {"detail": {"callback": this.hintCall }})
+        for (let w of this.wordTiles) {
+            w.tile.dispatchEvent(evCall)
+        }
     }
 
 

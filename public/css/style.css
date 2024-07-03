@@ -78,8 +78,7 @@ input[type="number"] {
 .tile {
     height: 50px;
     width: calc( (100% - 200px )/ var(--tiles-per-row) );
-    background-color: white;
-    opacity: 0.2;
+    background-color: rgba(0, 0, 0, 0.2);
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -137,8 +136,8 @@ input[type="number"] {
 }
 
 .clicked {
-    /* background-color: rgba(0, 0, 0, 0.4); */
-    opacity: 0.4;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* opacity: 0.4; */
 }
 
 .hidden {
