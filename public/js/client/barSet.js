@@ -2,8 +2,6 @@ class BarSet {
     constructor(barCont) {
         this.barCont = barCont
         this.bars = []
-        this.correctMatchups = {0: "lightyellow", 1:"lightgreen", 2:"lightblue", 3:"mediumpurple", 4:"lightcoral"}
-
         this._makeBar = this._makeBar.bind(this)
         this.wordsToOutput = this.wordsToOutput.bind(this)
     }
@@ -15,7 +13,7 @@ class BarSet {
 
     _makeBar(correctInd, clickedWords, title) {
         const sendWords = this.wordsToOutput(clickedWords)
-        const newBar = new Bar(this.barCont, this.correctMatchups[correctInd], title, sendWords)
+        const newBar = new Bar(this.barCont, correctMatchups[correctInd], title, sendWords)
         this.bars.push(newBar)
     }
 

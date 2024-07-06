@@ -8,6 +8,7 @@ class Tile {
         this._reset = this._reset.bind(this);
         this._finish = this._finish.bind(this);
         this._onUnClick = this._onUnClick.bind(this);
+        this._display = this._display.bind(this);
 
         this.hintMode = false;
 
@@ -28,7 +29,11 @@ class Tile {
             this.hintCallBack = e.detail.callback
         }.bind(this)) 
 
-        container.appendChild(this.tile)
+        this._display();
+    }
+
+    _display() {
+        this.container.appendChild(this.tile)
     }
 
     _onClick() {

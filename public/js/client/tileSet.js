@@ -28,31 +28,19 @@ class TileSet {
         this.clickedWords = [];
         this.clickedTiles = [];
         
-        let index = 0; 
+        let index = 0;
         for (const word of this.words) {
-            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index, "yellow", this.unClickWord)
+            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index, this.unClickWord)
             index ++;
         }
     }
 
     makeShuffle(words2) {
         this.containerElement.innerHTML=''
-        this.wordTiles = []
-        const clickedWords2 = this.clickedWords
-        this.makeClear()
-
-        let index = 0;  
-        for (const word of words2) {
-            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word.tile.word, index, "yellow", this.unClickWord)
-            const maintainClickEvent = new CustomEvent('maintainClick');
-            
-            for (const clickedWord of clickedWords2) {
-                if (clickedWord == word.tile.word) {
-                    // console.log(this.wordTiles[index])
-                    this.wordTiles[index].tile.dispatchEvent(maintainClickEvent)
-                }
-            }
-            index ++;
+        console.log(words2)
+        this.wordTiles.sort(() => Math.random() - 0.5);
+        for (const word of this.wordTiles) {
+            word._display();
         }
 
     }
