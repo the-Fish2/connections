@@ -22,7 +22,6 @@ class InputDataManager {
 
     _buildBoard(dims, words, answer_titles, answer_key, title) {
         this.words = words;
-        words.sort(() => Math.random() - 0.5);
 
         this.answer_key = answer_key;
         this.title = title;
@@ -72,9 +71,10 @@ class InputDataManager {
     }
 
     _makeShuffle() {
-        const remainingWords = this.tileSet.wordTiles.filter((tile) => !tile.tile.solved)
-        remainingWords.sort(() => Math.random() - 0.5);
-        this.tileSet.makeShuffle(remainingWords)
+        // const remainingWords = this.tileSet.wordTiles.filter((tile) => !tile.tile.solved)
+        // remainingWords.sort(() => Math.random() - 0.5);
+        this.tileSet.makeShuffle()
+        //remainingWords
     }
 
 }

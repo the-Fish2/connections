@@ -27,8 +27,6 @@ class Tile {
             this.hintMode = !this.hintMode
             this.hintCallBack = e.detail.callback
         }.bind(this)) 
-
-        this._display();
     }
 
     _display() {
