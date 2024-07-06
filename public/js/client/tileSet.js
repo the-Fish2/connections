@@ -30,7 +30,7 @@ class TileSet {
         
         let index = 0;
         for (const word of this.words) {
-            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index, this.unClickWord)
+            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index, "lightyellow", this.unClickWord)
             index ++;
         }
     }

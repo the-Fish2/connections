@@ -21,7 +21,6 @@ class Tile {
         this.tile.solved = false;
 
         this.tile.addEventListener('click', this._onClick)
-        this.tile.addEventListener('maintainClick', this._onClick)
         this.tile.addEventListener('reset', this._reset) 
         this.tile.addEventListener('finish', this._finish) 
         this.tile.addEventListener('hintMode', function (e) {
