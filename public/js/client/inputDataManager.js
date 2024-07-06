@@ -2,6 +2,7 @@ class InputDataManager {
     constructor(containerElement) {
         this.container = containerElement
         this.barContainer = new BarSet(document.querySelector("#bars"))
+        this.connectionsContainer = document.querySelector('.container')
         
         this._buildForm = this._buildForm.bind(this)
         this._buildBoard = this._buildBoard.bind(this)
@@ -57,12 +58,16 @@ class InputDataManager {
     }
 
     _makeHint() {
-        //need several components
-        //first, background screen is grayed out and new text that says "pick a tile"
-        //then, a tile needs to be clicked without triggering the onclick function. 
-        //then, that tile reveals its color, and returns to the game board. everything remains selected
-        //note: clicking should not take away the color!
-        const hintMode = new CustomEvent('hintMode');
+        if (this.connectionsContainer.classList.contains('hint-mode')) {
+            this.connectionsContainer.classList.remove('hint-mode')
+            userInfo.textContent = ""
+        }
+        else {
+            this.connectionsContainer.classList.add('hint-mode')
+            userInfo.textContent = "Select a tile!"
+        }
+        
+        const hintMode = new CustomEvent('hintMode', {"detail": {container: this.connectionsContainer}});
         this.tileSet.containerElement.dispatchEvent(hintMode)
     }
 

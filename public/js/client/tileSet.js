@@ -36,6 +36,7 @@ class TileSet {
     }
 
     makeShuffle() {
+
         this.containerElement.innerHTML=''
         this.wordTiles.sort(() => Math.random() - 0.5);
         for (const word of this.wordTiles) {
@@ -48,11 +49,12 @@ class TileSet {
         this.checkAnswer();
     }
 
-    hintCall() {
+    hintCall(event) {
         const evCall = new CustomEvent('hintMode', {"detail": {"callback": this.hintCall }})
         for (let w of this.wordTiles) {
             w.tile.dispatchEvent(evCall)
         }
+
     }
 
 
@@ -92,11 +94,20 @@ class TileSet {
 
         let correct = false 
         let correctInd = -1;
+        let mistakeCounter = 0;
 
         for (let row of this.answer_key) {
             correctInd ++;
-            if (JSON.stringify(row) === JSON.stringify(this.clickedWords)) {
+            for (const [index, element] of row.entries()) {
+                if (this.clickedWords[index] != element) {
+                    mistakeCounter ++;
+                }
+            }
+            if (mistakeCounter == 0) {
                 correct = true;
+                break;
+            }
+            else if (mistakeCounter != 4) {
                 break;
             }
         }
@@ -113,6 +124,14 @@ class TileSet {
         }
         else {
             // console.log("Incorrect")
+            if (mistakeCounter == 1) {
+                userInfo.textContent = "One away!"
+            }
+
+            setTimeout(() => {
+                userInfo.textContent = ""
+            }, 3000);
+
             const resetEvent = new CustomEvent('reset');
 
             for (let w of this.clickedTiles) {

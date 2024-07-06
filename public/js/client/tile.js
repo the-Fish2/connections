@@ -47,7 +47,9 @@ class Tile {
     }
     _hint() {
         this.tile.style.backgroundColor = this.tile.color;
-        this.hintCallBack()
+        this.hintCallBack(true)
+        document.querySelector('.container').classList.remove('hint-mode')
+        userInfo.innerHTML = "";
     }
 
     _onUnClick() {
