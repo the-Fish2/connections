@@ -2,7 +2,7 @@ class InputDataManager {
     constructor(containerElement) {
         this.container = containerElement
         this.barContainer = new BarSet(document.querySelector("#bars"))
-        this.connectionsContainer = document.querySelector('.container')
+        this.connectionsContainer = document.querySelector('.rightCol')
         
         this._buildForm = this._buildForm.bind(this)
         this._buildBoard = this._buildBoard.bind(this)
@@ -11,6 +11,7 @@ class InputDataManager {
         this._makeHint = this._makeHint.bind(this)
         this._makeClear = this._makeClear.bind(this)
         this._makeShuffle = this._makeShuffle.bind(this)
+        this._checkSet = this._checkSet.bind(this)
     }
 
     _buildForm() {
@@ -43,8 +44,9 @@ class InputDataManager {
         const buttonContainer = document.querySelector('#buttonContainer')
         const buttonList = {
             "hint": {name: "Hint", id: "hint", callBack: this._makeHint},
-            "clear": {name: "Clear", id: "clear", callBack: this._makeClear},
+            "clear": {name: "Deselect all", id: "clear", callBack: this._makeClear},
             "shuffle": {name: "Shuffle", id: "shuffle", callBack: this._makeShuffle},
+            "submit": {name: "Submit", id: "submitGame", callBack: this._checkSet}
         }
 
         this.tileSet = new TileSet(tilesContainer, this._makeBar, this.words, this.answer_key)
@@ -80,6 +82,10 @@ class InputDataManager {
         // remainingWords.sort(() => Math.random() - 0.5);
         this.tileSet.makeShuffle()
         //remainingWords
+    }
+
+    _checkSet() {
+        this.tileSet.checkAnswer()
     }
 
 }

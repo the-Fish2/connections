@@ -63,9 +63,7 @@ class TileSet {
         // console.log(this.clickedWords)
         this.clickedTiles.push(thisTile)
         this.clickedWords.push(thisTile.word)
-        if (this.clickedWords.length === TILES_PER_ROW) {
-            this.checkAnswer()
-        }
+
     }
 
     unClickWord(thisTile) {
@@ -91,6 +89,10 @@ class TileSet {
 
     checkAnswer() {
         this.clickedWords.sort();
+
+        // if (this.clickedWords.length === TILES_PER_ROW) {
+        //     this.checkAnswer()
+        // }
 
         let correct = false 
         let correctInd = -1;
