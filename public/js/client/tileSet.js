@@ -43,13 +43,15 @@ class TileSet {
             word._display();
         }
 
+        console.log(this.answer_key)
+
     }
 
     makeClear() {
         this.checkAnswer();
     }
 
-    hintCall(event) {
+    hintCall() {
         const evCall = new CustomEvent('hintMode', {"detail": {"callback": this.hintCall }})
         for (let w of this.wordTiles) {
             w.tile.dispatchEvent(evCall)
@@ -90,6 +92,9 @@ class TileSet {
     checkAnswer() {
         this.clickedWords.sort();
 
+        // console.log(this.clickedWords)
+        // console.log(this.answer_key)
+
         // if (this.clickedWords.length === TILES_PER_ROW) {
         //     this.checkAnswer()
         // }
@@ -98,7 +103,8 @@ class TileSet {
         let correctInd = -1;
         let mistakeCounter = 0;
 
-        for (let row of this.answer_key) {
+        for (const row of this.answer_key) {
+            mistakeCounter = 0;
             correctInd ++;
             for (const [index, element] of row.entries()) {
                 if (this.clickedWords[index] != element) {
@@ -109,7 +115,7 @@ class TileSet {
                 correct = true;
                 break;
             }
-            else if (mistakeCounter != 4) {
+            else if (mistakeCounter == 1) {
                 break;
             }
         }
