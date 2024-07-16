@@ -96,11 +96,17 @@ input[type="number"] {
     padding: 10px;
     border-radius: 10px;
 
+    border-style: solid;
+    border-color: whitesmoke;
+    border-width: 3px;
+
     text-align: center;
     color: black;
     justify-content: center;
     font-family: var(--fontSettings);
     font-size: 30px;
+
+    overflow: hidden;
 
     display: flex;
 }

@@ -12,6 +12,9 @@ class InputDataManager {
         this._makeClear = this._makeClear.bind(this)
         this._makeShuffle = this._makeShuffle.bind(this)
         this._checkSet = this._checkSet.bind(this)
+
+        this.adjustFontSize = this.adjustFontSize.bind(this)
+        this.updateAllTiles = this.updateAllTiles.bind(this)
     }
 
     _buildForm() {
@@ -52,6 +55,8 @@ class InputDataManager {
         this.tileSet = new TileSet(tilesContainer, this._makeBar, this.words, this.answer_key)
         this.tileSet.makeTiles();
 
+        this.updateAllTiles();
+
         const buttonSet = new ButtonSet(buttonContainer, buttonList)
     }
     
@@ -88,4 +93,23 @@ class InputDataManager {
         this.tileSet.checkAnswer()
     }
 
+    adjustFontSize(tile) {
+        const text = tile.firstChild;
+        
+        let fontSize = 30;
+        tile.style.fontSize = fontSize + 'px';
+        
+        while (text.scrollHeight > tile.clientHeight || text.scrollWidth > tile.clientWidth) {
+          fontSize--;
+          tile.style.fontSize = fontSize + 'px';
+          
+          if (fontSize <= 1) break;
+        }
+      }
+      
+    updateAllTiles() {
+        const tiles = document.querySelectorAll('.tile');
+        tiles.forEach(this.adjustFontSize);
+    }
+    
 }

@@ -25,6 +25,7 @@ class Tile {
         this.tile.addEventListener('finish', this._finish) 
         this.tile.addEventListener('hintMode', function (e) {
             this.hintMode = !this.hintMode
+            this._onUnClick()
             this.hintCallBack = e.detail.callback
         }.bind(this)) 
     }
@@ -52,16 +53,11 @@ class Tile {
         userInfo.innerHTML = "";
     }
 
-    _onUnClick() {
-        if (this.hintMode) {
-            this._hint()
-        }
-        else {
-            this.tile.classList.remove('clicked')
-            this.onUnClickCallback(this.tile);
-            this.tile.removeEventListener('click', this._onUnClick)
-            this.tile.addEventListener('click', this._onClick)
-        }
+    _onUnClick() {        
+        this.tile.classList.remove('clicked')
+        this.onUnClickCallback(this.tile);
+        this.tile.removeEventListener('click', this._onUnClick)
+        this.tile.addEventListener('click', this._onClick)
     }
 
     _finish() {
