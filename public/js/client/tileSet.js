@@ -43,7 +43,7 @@ class TileSet {
             word._display();
         }
 
-        console.log(this.answer_key)
+        // console.log(this.answer_key)
 
     }
 
@@ -95,22 +95,25 @@ class TileSet {
         // console.log(this.clickedWords)
         // console.log(this.answer_key)
 
-        // if (this.clickedWords.length === TILES_PER_ROW) {
-        //     this.checkAnswer()
-        // }
+        if (this.clickedWords.length != TILES_PER_ROW) {
+            const resetEvent = new CustomEvent('reset');
+
+            for (let w of this.clickedTiles) {
+                    w.dispatchEvent(resetEvent);
+            }
+
+            this.clickedWords = [];
+            this.clickedTiles = [];
+            return;
+        }
 
         let correct = false 
         let correctInd = -1;
         let mistakeCounter = 0;
 
         for (const row of this.answer_key) {
-            mistakeCounter = 0;
+            mistakeCounter = this.countDiffs(this.clickedWords, row);
             correctInd ++;
-            for (const [index, element] of row.entries()) {
-                if (this.clickedWords[index] != element) {
-                    mistakeCounter ++;
-                }
-            }
             if (mistakeCounter == 0) {
                 correct = true;
                 break;
@@ -149,5 +152,20 @@ class TileSet {
 
         this.clickedWords = [];
         this.clickedTiles = [];
+    }
+
+    countDiffs(arr1, arr2) {
+        const set1 = new Set(arr1);
+        const set2 = new Set(arr2);
+        
+        let differences = 0;
+        
+        for (const item of set1) {
+            if (!set2.has(item)) {
+            differences++;
+            }
+        }
+        console.log(differences)
+        return differences;
     }
 }
