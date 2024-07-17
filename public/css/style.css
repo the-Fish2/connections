@@ -105,6 +105,7 @@ input[type="number"] {
     justify-content: center;
     font-family: var(--fontSettings);
     font-size: 30px;
+    align-items: center;
 
     overflow: hidden;
 

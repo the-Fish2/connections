@@ -6,3 +6,9 @@ let TILES_PER_ROW = 4;
 const inputDataManager = new InputDataManager(tilesContainer);
 inputDataManager._buildForm();
 
+window.addEventListener('resize', function() {
+    clearTimeout(window.resizeTimer);
+    window.resizeTimer = setTimeout(function() {
+      inputDataManager.updateAllTiles();
+    }, 250);
+});

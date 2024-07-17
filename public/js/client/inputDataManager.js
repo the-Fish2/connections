@@ -95,12 +95,13 @@ class InputDataManager {
 
     adjustFontSize(tile) {
         const text = tile.firstChild;
-        
+
         let fontSize = 30;
         tile.style.fontSize = fontSize + 'px';
-        
-        while (text.scrollHeight > tile.clientHeight || text.scrollWidth > tile.clientWidth) {
+
+        while (tile.scrollWidth > tile.clientWidth) {
           fontSize--;
+          console.log(fontSize)
           tile.style.fontSize = fontSize + 'px';
           
           if (fontSize <= 1) break;
@@ -111,5 +112,4 @@ class InputDataManager {
         const tiles = document.querySelectorAll('.tile');
         tiles.forEach(this.adjustFontSize);
     }
-    
 }
