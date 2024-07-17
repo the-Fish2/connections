@@ -27,7 +27,7 @@ class InputData {
         let valIter = 0;
         for (const item of val) {
             if (valIter < dims) {
-                const newElems = item.value.split(",")
+                const newElems = item.value.split(",").slice(0, dims)
                 this.answer_key.push(newElems)
                 for (const e of newElems) {
                     this.words.push(e)
