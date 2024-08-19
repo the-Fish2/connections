@@ -28,7 +28,7 @@ class TileSet {
         
         let index = 0;
         for (const word of this.words) {
-            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index, correctMatchups[Math.floor(index/4)], this.unClickWord)
+            this.wordTiles[index] = new Tile(this.containerElement, this.clickWord, word, index, correctMatchups[Math.floor(index/TILES_PER_ROW)], this.unClickWord)
             index ++;
         }
 

@@ -67,7 +67,7 @@ class InputDataManager {
     _makeHint() {
         if (this.connectionsContainer.classList.contains('hint-mode')) {
             this.connectionsContainer.classList.remove('hint-mode')
-            userInfo.textContent = ""
+            userInfo.textContent = " \n "
         }
         else {
             this.connectionsContainer.classList.add('hint-mode')
@@ -101,7 +101,7 @@ class InputDataManager {
 
         while (tile.scrollWidth > tile.clientWidth) {
           fontSize--;
-          console.log(fontSize)
+          //console.log(fontSize)
           tile.style.fontSize = fontSize + 'px';
           
           if (fontSize <= 1) break;
